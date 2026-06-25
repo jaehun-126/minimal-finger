@@ -140,24 +140,19 @@
       box-shadow: 0 8px 26px rgba(15, 23, 42, 0.06);
     }
 
-    .figure-frame object,
-    .figure-frame iframe {
+    .figure-frame img {
       width: 100%;
-      height: 430px;
+      height: auto;
       border: none;
       border-radius: 10px;
       display: block;
       background: #ffffff;
     }
 
-    .figure-frame.tall object,
-    .figure-frame.tall iframe {
-      height: 620px;
-    }
-
-    .figure-frame.short object,
-    .figure-frame.short iframe {
-      height: 320px;
+    .figure-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
     }
 
     .figure-caption {
@@ -206,16 +201,6 @@
     }
 
     @media screen and (max-width: 768px) {
-      .figure-frame object,
-      .figure-frame iframe {
-        height: 340px;
-      }
-
-      .figure-frame.tall object,
-      .figure-frame.tall iframe {
-        height: 460px;
-      }
-
       .publication-title {
         font-size: 2rem !important;
       }
@@ -239,16 +224,15 @@
     Required figure files.
     Put these files in: static/images/
 
-    FigureLink_Node_Graphs.pdf
-    FigureDual_Hypergraphs.pdf
-    Figure2.pdf
-    Figure3.pdf
-    Figure6.pdf
-    Figure7.pdf
-    Figure8.pdf
-    Figure11.pdf
-    Figure12.pdf
-    Figure13.pdf
+    FigureA.png
+    FigureB.png
+    Figure2.png
+    Figure3.png
+    Figure7.png
+    Figure8.png
+    Figure11.png
+    Figure12.png
+    Figure13.png
 
     Required videos.
     Put these files in: static/videos/
@@ -415,13 +399,16 @@
       <div class="paper-card" style="margin-bottom: 2.2rem;">
         <div class="columns is-vcentered is-gapless">
           <div class="column is-5">
-            <div class="figure-frame m-5">
-              <object data="static/images/FigureLink_Node_Graphs.pdf" type="application/pdf">
-                <a href="static/images/FigureLink_Node_Graphs.pdf">FigureLink_Node_Graphs.pdf</a>
-              </object>
+            <div class="figure-stack m-5">
+              <div class="figure-frame">
+                <img src="static/images/FigureA.png" alt="Link-node joint-edge simple graphs">
+              </div>
+              <div class="figure-frame">
+                <img src="static/images/FigureB.png" alt="Joint-node link-hyperedge dual hypergraphs">
+              </div>
               <p class="figure-caption">
                 (TOP) Link-node / joint-edge simple graphs.
-                (BOTTOM) Joint-node / link-edge hypergraphs.
+                (BOTTOM) Joint-node / link-hyperedge dual hypergraphs.
               </p>
             </div>
           </div>
@@ -498,10 +485,13 @@
           </div>
 
           <div class="column is-5">
-            <div class="figure-frame m-5">
-              <object data="static/images/Figure7.pdf" type="application/pdf">
-                <a href="static/images/Figure7.pdf">Figure7.pdf</a>
-              </object>
+            <div class="figure-stack m-5">
+              <div class="figure-frame">
+                <img src="static/images/Figure7.png" alt="Optimized fingertip workspace">
+              </div>
+              <div class="figure-frame">
+                <img src="static/images/Figure8.png" alt="Fabricated finger mechanism and assembled robotic hand">
+              </div>
               <p class="figure-caption">
                 (TOP) Optimized fingertip workspace of the selected Pareto-optimal mechanism.
                 (BOTTOM) Fabricated finger mechanism and four-finger robotic hand assembly.
@@ -520,10 +510,8 @@
           <div class="paper-card" style="margin-bottom: 2rem;">
             <div class="card-body">
               <h3 class="title is-4">Whole-hand grasp capability</h3>
-              <div class="figure-frame tall">
-                <object data="static/images/Figure11.pdf" type="application/pdf">
-                  <a href="static/images/Figure11.pdf">Figure11.pdf</a>
-                </object>
+              <div class="figure-frame">
+                <img src="static/images/Figure11.png" alt="Whole-hand grasp postures evaluated based on the GRASP taxonomy">
               </div>
               <p class="figure-caption">
                 Whole-hand grasp postures evaluated based on the GRASP taxonomy.
@@ -537,10 +525,8 @@
               <div class="paper-card">
                 <div class="card-body">
                   <h3 class="title is-4">Motion repeatability</h3>
-                  <div class="figure-frame short">
-                    <object data="static/images/Figure12.pdf" type="application/pdf">
-                      <a href="static/images/Figure12.pdf">Figure12.pdf</a>
-                    </object>
+                  <div class="figure-frame">
+                    <img src="static/images/Figure12.png" alt="Repeatability results for five predefined motion tests">
                   </div>
                   <p class="figure-caption">
                     Repeatability results for five predefined motion tests.
@@ -553,10 +539,8 @@
               <div class="paper-card">
                 <div class="card-body">
                   <h3 class="title is-4">Force capacity</h3>
-                  <div class="figure-frame short">
-                    <object data="static/images/Figure13.pdf" type="application/pdf">
-                      <a href="static/images/Figure13.pdf">Figure13.pdf</a>
-                    </object>
+                  <div class="figure-frame">
+                    <img src="static/images/Figure13.png" alt="Measured fingertip force capacity under a constant-current command">
                   </div>
                   <p class="figure-caption">
                     Measured fingertip force capacity under a constant-current command.
@@ -565,7 +549,7 @@
               </div>
             </div>
           </div>
-          
+
           <div class="columns video-grid" style="margin-top: 2rem;">
             <div class="column">
               <video controls muted loop preload="metadata">
@@ -597,7 +581,7 @@
               </p>
             </div>
           </div>
-          
+
         </div>
       </div>
 
@@ -623,9 +607,7 @@
           </p>
 
           <div class="figure-frame">
-            <object data="static/images/FigureLink_Node_Graphs.pdf" type="application/pdf">
-              <a href="static/images/FigureLink_Node_Graphs.pdf">FigureLink_Node_Graphs.pdf</a>
-            </object>
+            <img src="static/images/FigureA.png" alt="Link-node joint-edge simple graphs">
           </div>
         </div>
       </div>
@@ -644,9 +626,7 @@
           </p>
 
           <div class="figure-frame">
-            <object data="static/images/FigureDual_Hypergraphs.pdf" type="application/pdf">
-              <a href="static/images/FigureDual_Hypergraphs.pdf">FigureDual_Hypergraphs.pdf</a>
-            </object>
+            <img src="static/images/FigureB.png" alt="Joint-node link-hyperedge dual hypergraphs">
           </div>
         </div>
       </div>
@@ -665,10 +645,8 @@
 
           <div class="columns">
             <div class="column">
-              <div class="figure-frame short">
-                <object data="static/images/Figure2.pdf" type="application/pdf">
-                  <a href="static/images/Figure2.pdf">Figure2.pdf</a>
-                </object>
+              <div class="figure-frame">
+                <img src="static/images/Figure2.png" alt="Seven-link/eight-joint topology enumeration">
                 <p class="figure-caption">
                   Figure 2. Seven-link/eight-joint topology enumeration.
                 </p>
@@ -676,10 +654,8 @@
             </div>
 
             <div class="column">
-              <div class="figure-frame short">
-                <object data="static/images/Figure3.pdf" type="application/pdf">
-                  <a href="static/images/Figure3.pdf">Figure3.pdf</a>
-                </object>
+              <div class="figure-frame">
+                <img src="static/images/Figure3.png" alt="Mirror-symmetric candidates topology 14 and topology 16">
                 <p class="figure-caption">
                   Figure 3. Mirror-symmetric candidates: topology 14 and topology 16.
                 </p>
