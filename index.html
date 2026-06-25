@@ -4,31 +4,54 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <title>Topology-to-Dimension Synthesis of a Structurally Minimal 3-DoF Closed-Chain Robotic Finger</title>
   <meta name="title" content="Topology-to-Dimension Synthesis of a Structurally Minimal 3-DoF Closed-Chain Robotic Finger">
-  <meta name="description" content="A computational design framework for a linkage-driven robotic finger that achieves exactly 3-DoF with a structurally minimal closed-chain architecture.">
+  <meta name="description" content="A computational design framework for a linkage-driven robotic finger that achieves exactly three functional DoF with a structurally minimal closed-chain architecture.">
   <meta name="keywords" content="Robotic Finger, Mechanism Synthesis, Closed-Chain Mechanism, Computational Design, Structural Intelligence">
   <meta name="author" content="Jaehun Kim, Eunho Sung, Seunghwan Byun, Seungbin You, Jaeheung Park">
-  <meta name="robots" content="noindex, nofollow"> <meta name="citation_title" content="Topology-to-Dimension Synthesis of a Structurally Minimal 3-DoF Closed-Chain Robotic Finger">
+  
+  <meta name="robots" content="noindex, nofollow"> <meta name="language" content="English">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Seoul National University & KIST">
+  <meta property="og:title" content="Topology-to-Dimension Synthesis of a Structurally Minimal 3-DoF Robotic Finger">
+  <meta property="og:description" content="End-to-end computational pipeline for synthesizing, optimizing, and fabricating a minimal closed-chain robotic finger.">
+  <meta property="og:url" content="https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPOSITORY_NAME">
+  <meta property="og:image" content="static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Structurally Minimal 3-DoF Robotic Finger">
+  <meta name="twitter:description" content="Computational synthesis of a spatial closed-chain mechanism for dexterous manipulation.">
+  <meta name="twitter:image" content="static/images/social_preview.png">
+
+  <meta name="citation_title" content="Topology-to-Dimension Synthesis of a Structurally Minimal 3-DoF Closed-Chain Robotic Finger">
   <meta name="citation_author" content="Kim, Jaehun">
   <meta name="citation_author" content="Park, Jaeheung">
   <meta name="citation_publication_date" content="2024">
-  <meta name="citation_conference_title" content="IEEE Robotics and Automation Letters (RA-L)">
-
+  <meta name="citation_conference_title" content="IEEE Robotics and Automation Letters">
+  <meta name="citation_pdf_url" content="static/pdfs/JaehunKim_RAL_Manuscript.pdf">
+  
+  <title>Topology-to-Dimension Synthesis | Jaehun Kim</title>
+  
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
   <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
   <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
   <script defer src="static/js/index.js"></script>
-
+  
   <script>
-    var password = "snurobotics2026"; // 교수님께 공유할 비밀번호
+    var password = "snurobotics2026"; // 원하는 비밀번호로 변경하세요
     var input = prompt("Please enter the access password to view this academic portfolio:");
     if (input !== password) {
       alert("Incorrect password. Access denied.");
@@ -44,35 +67,23 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title" style="font-size: 2.3rem; line-height: 1.2;">
+            
+            <h1 class="title is-1 publication-title" style="font-size: 2.4rem; line-height: 1.2;">
               Topology-to-Dimension Synthesis of a Structurally Minimal 3-DoF Closed-Chain Robotic Finger
             </h1>
             
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">
-                <a href="#" target="_blank"><strong>Jaehun Kim</strong></a><sup>1</sup>,
-              </span>
-              <span class="author-block">
-                <a href="#" target="_blank">Eunho Sung</a><sup>1</sup>,
-              </span>
-              <span class="author-block">
-                <a href="#" target="_blank">Seunghwan Byun</a><sup>1</sup>,
-              </span>
-              <span class="author-block">
-                <a href="#" target="_blank">Seungbin You</a><sup>2</sup>,
-              </span>
-              <span class="author-block">
-                <a href="#" target="_blank">Jaeheung Park</a><sup>3</sup>
-              </span>
+            <div class="is-size-5 publication-authors" style="margin-top: 1.5rem;">
+              <span class="author-block"><strong>Jaehun Kim</strong><sup>1</sup>,</span>
+              <span class="author-block">Eunho Sung<sup>1</sup>,</span>
+              <span class="author-block">Seunghwan Byun<sup>1</sup>,</span>
+              <span class="author-block">Seungbin You<sup>2</sup>,</span>
+              <span class="author-block">Jaeheung Park<sup>1</sup></span>
             </div>
 
-            <div class="is-size-5 publication-authors">
-              <span class="author-block" style="font-size: 1rem; color: #555;">
-                <sup>1</sup>Seoul National University & KIST, Korea <br>
-                <sup>2</sup>Korea University, Korea <br>
-                <sup>3</sup>Graduate School of Convergence Science and Technology, Seoul National University <br>
-                <strong>IEEE Robotics and Automation Letters (RA-L)</strong>
-              </span>
+            <div class="is-size-6 publication-authors" style="margin-top: 1rem; color: #555;">
+              <span class="author-block"><sup>1</sup> Seoul National University (SNU), Republic of Korea</span><br>
+              <span class="author-block"><sup>2</sup> Korea Institute of Science and Technology (KIST), Republic of Korea</span><br>
+              <span class="author-block" style="font-weight: 600; margin-top: 0.5rem; display: inline-block;">Under Review at IEEE Robotics and Automation Letters (RA-L)</span>
             </div>
 
             <div class="column has-text-centered">
@@ -80,18 +91,18 @@
                 <span class="link-block">
                   <a href="static/pdfs/JaehunKim_RAL_Manuscript.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon"><i class="fas fa-file-pdf"></i></span>
-                    <span>Paper PDF</span>
+                    <span>Manuscript PDF</span>
                   </a>
                 </span>
                 <span class="link-block">
-                  <a href="https://github.com/YOUR_GITHUB_ID" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <a href="#" target="_blank" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon"><i class="fab fa-github"></i></span>
-                    <span>Project GitHub</span>
+                    <span>Code (Private)</span>
                   </a>
                 </span>
               </div>
             </div>
-
+            
           </div>
         </div>
       </div>
@@ -101,11 +112,11 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
-        <video id="teaser-video" autoplay controls muted loop height="100%" preload="metadata">
+        <video id="teaser" autoplay muted loop controls height="100%">
           <source src="static/videos/banner_video.mp4" type="video/mp4">
         </video>
-        <h2 class="subtitle has-text-centered" style="font-size: 1.05rem; margin-top: 15px;">
-          Demonstration of the fabricated 3-DoF structurally minimal closed-chain robotic finger performing coordinated flexion/extension and abduction/adduction motions.
+        <h2 class="subtitle has-text-centered" style="margin-top: 1rem; font-size: 1.1rem;">
+          Demonstration of the fabricated 3-DoF structurally minimal closed-chain robotic finger. The mechanism effectively generates coordinated flexion/extension (FE) and abduction/adduction (AA) motions directly from palm-mounted actuators.
         </h2>
       </div>
     </div>
@@ -115,13 +126,13 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Abstract</h2>
+          <h2 class="title is-3">Abstract & Motivation</h2>
           <div class="content has-text-justified">
             <p>
-              Linkage-driven robotic fingers offer a distinct advantage by maintaining low inertia and mass at the distal segments while eliminating the inherent nonlinearities—such as friction, tendon slack, and hysteresis—commonly associated with tendon-driven systems. However, traditional anthropomorphic designs often decouple the joint mechanisms to mimic human anatomy, which inherently introduces an excessive number of links and joints beyond the mathematical minimum required, thereby drastically increasing structural complexity. 
+              Linkage-driven robotic fingers offer a distinct advantage by maintaining low inertia at the distal segments while eliminating the inherent nonlinearities (e.g., friction, tendon slack) commonly associated with tendon-driven systems. However, traditional anthropomorphic designs often decouple the joint mechanisms to mimic human anatomy. This conventional approach inherently introduces an excessive number of links and joints beyond the mathematical minimum required for a 3-DoF motion, thereby drastically increasing structural complexity.
             </p>
             <p>
-              This research bypasses the conventional decoupled paradigm by treating the entire finger as a <strong>unified spatial closed-chain mechanism</strong>. We systematically enumerate admissible 3-DoF spatial closed-chain topologies, identify the minimum-link, minimum-joint family under mobility and palm-level actuation feasibility constraints, and then perform dimensional optimization using the NSGA-II algorithm to secure sufficient fingertip workspace under symmetry and anthropomorphic constraints.
+              To address this dilemma, this research bypasses the decoupled paradigm by treating the entire finger as a <strong>unified spatial closed-chain mechanism</strong>. We systematically enumerate admissible 3-DoF spatial closed-chain topologies, identify the minimum-link and minimum-joint family (7-link, 8-joint) under functional and actuation-feasibility constraints, and perform dimensional optimization to secure sufficient fingertip workspace under anthropomorphic boundary limits. The resulting mechanism places all actuators on the palm and successfully retains functional whole-hand grasp diversity despite its extreme structural minimality.
             </p>
           </div>
         </div>
@@ -132,36 +143,70 @@
   <section class="hero is-small">
     <div class="hero-body">
       <div class="container is-max-desktop">
-        <h2 class="title is-3 has-text-centered" style="margin-bottom: 30px;">Key Research Breakdown</h2>
+        <h2 class="title is-3 has-text-centered">Computational Design Pipeline</h2>
+        <br>
         <div id="results-carousel" class="carousel results-carousel">
           
           <div class="item">
-            <div style="text-align: center; background: #f9f9f9; padding: 20px; border-radius: 8px;">
-              <img src="static/images/topology_graphs.png" alt="Graph Enumeration" style="max-height: 350px; object-fit: contain;"/>
-              <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 10px;">
-                <strong>Step 1: Topological Enumeration.</strong> 4 unique base graph topologies (Index 1-4) derived via simple graph and dual hypergraph mappings under structural minimization constraints.
+            <div style="text-align: center; background: #fff; padding: 15px; border-radius: 8px;">
+              <img src="static/images/topology_graphs.png" alt="Graph Enumeration" loading="lazy" style="max-height: 400px; object-fit: contain; margin: 0 auto; display: block;"/>
+              <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 15px;">
+                <strong>Step 1: Topological Enumeration via Graph Theory.</strong> Extracting valid 7-link, 8-joint structures using simple graph constraints and dual hypergraph mappings to avoid unactuated axial spins (over-constraints).
               </h2>
             </div>
           </div>
           
           <div class="item">
-            <div style="text-align: center; background: #f9f9f9; padding: 20px; border-radius: 8px;">
-              <img src="static/images/dimensional_optimization.png" alt="Dimensional Optimization" style="max-height: 350px; object-fit: contain;"/>
-              <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 10px;">
-                <strong>Step 2: Dimensional Optimization.</strong> Multi-objective workspace maximization utilizing the NSGA-II algorithm, balanced with anthropomorphic boundary constraints.
+            <div style="text-align: center; background: #fff; padding: 15px; border-radius: 8px;">
+              <img src="static/images/dimensional_optimization.png" alt="Dimensional Optimization" loading="lazy" style="max-height: 400px; object-fit: contain; margin: 0 auto; display: block;"/>
+              <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 15px;">
+                <strong>Step 2: Dimensional Optimization.</strong> Maximizing voxelized 3D workspace and pixelized 2D symmetry-plane area using the NSGA-II algorithm, strictly bounded by anthropomorphic envelope constraints.
               </h2>
             </div>
           </div>
           
           <div class="item">
-            <div style="text-align: center; background: #f9f9f9; padding: 20px; border-radius: 8px;">
-              <img src="static/images/grasp_taxonomy.png" alt="GRASP Taxonomy" style="max-height: 350px; object-fit: contain;"/>
-              <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 10px;">
-                <strong>Step 3: Functional Assessment.</strong> Physical prototype successfully executing 32 out of 33 grasp types in the GRASP taxonomy, ensuring high dexterity despite structural minimization.
+            <div style="text-align: center; background: #fff; padding: 15px; border-radius: 8px;">
+              <img src="static/images/grasp_taxonomy.png" alt="GRASP Taxonomy" loading="lazy" style="max-height: 400px; object-fit: contain; margin: 0 auto; display: block;"/>
+              <h2 class="subtitle has-text-centered" style="font-size: 1rem; margin-top: 15px;">
+                <strong>Step 3: Functional Validation.</strong> The assembled 4-finger prototype successfully performs 32 out of 33 human grasp types defined in the GRASP taxonomy, proving its dexterity.
               </h2>
             </div>
           </div>
 
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-small is-light">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Experimental Demonstrations</h2>
+        <br>
+        <div id="results-carousel" class="carousel results-carousel">
+          
+          <div class="item item-video1">
+            <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
+              <source src="static/videos/carousel1.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Test 1: 3-DoF Kinematic Motion (AA & FE)</p>
+          </div>
+          
+          <div class="item item-video2">
+            <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
+              <source src="static/videos/carousel2.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Test 2: Whole-Hand Object Grasping</p>
+          </div>
+          
+          <div class="item item-video3">
+            <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
+              <source src="static/videos/carousel3.mp4" type="video/mp4">
+            </video>
+            <p class="has-text-centered" style="margin-top: 10px; font-weight: 500;">Test 3: Fingertip Force Capacity Evaluation</p>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -175,12 +220,8 @@
       <pre id="bibtex-code"><code>@article{kim2024topology,
   title={Topology-to-Dimension Synthesis of a Structurally Minimal 3-DoF Closed-Chain Robotic Finger},
   author={Kim, Jaehun and Sung, Eunho and Byun, Seunghwan and You, Seungbin and Park, Jaeheung},
-  journal={IEEE Robotics and Automation Letters},
-  volume={9},
-  number={7},
-  pages={6304--6311},
-  year={2024},
-  publisher={IEEE}
+  journal={IEEE Robotics and Automation Letters (Submitted)},
+  year={2024}
 }</code></pre>
     </div>
   </section>
@@ -191,7 +232,8 @@
         <div class="column is-8">
           <div class="content has-text-centered">
             <p>
-              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+              This portfolio page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>. <br>
+              Maintained by Jaehun Kim for academic application purposes.
             </p>
           </div>
         </div>
