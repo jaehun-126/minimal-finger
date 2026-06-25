@@ -412,6 +412,35 @@
             <strong>3R3U2S</strong> or <strong>4R1U3S</strong>.
           </p>
 
+          <p>
+            Additional topology-level over-constraint screening and a bilateral symmetry condition, imposed to reflect
+            the symmetric structure of a robotic finger, further reduce the admissible set to two mechanism-topology
+            candidates: topology 14 and topology 16. Among them, topology 14 is selected because its higher-DoF joints
+            are located closer to the base, which is expected to provide a larger reachable fingertip workspace after
+            dimensional optimization.
+          </p>
+          
+          <ul>
+            <li>
+              <strong>Mobility filtering:</strong>
+              candidate link-joint combinations are first identified from the spatial Grübler equation under the target
+              3-DoF condition.
+            </li>
+            <li>
+              <strong>Functional-DoF screening:</strong>
+              topologies containing joint motions that do not contribute independent distal output motion are excluded.
+            </li>
+            <li>
+              <strong>Topology-level screening:</strong>
+              over-constraint and bilateral symmetry conditions reduce the candidates to topology 14 and topology 16.
+            </li>
+            <li>
+              <strong>Final selection:</strong>
+              topology 14 is selected because placing higher-DoF joints closer to the base is expected to improve the
+              reachable workspace of the fingertip.
+            </li>
+          </ul>
+
           <div class="figure-frame" style="margin-top: 1.5rem;">
             <img src="static/images/Figure2.png" alt="Seven-link/eight-joint topology enumeration">
           </div>
