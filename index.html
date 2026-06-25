@@ -1,131 +1,843 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
+  <meta name="title" content="Topology-to-Dimension Synthesis of a Structurally Minimal 3-DoF Closed-Chain Robotic Finger">
+  <meta name="description" content="A computational design framework for synthesizing a structurally minimal 3-DoF spatial closed-chain robotic finger from topology selection to dimensional optimization and hardware validation.">
+  <meta name="keywords" content="Robotic Finger, Robotic Hand, Closed-Chain Mechanism, Linkage Mechanism, Topology Synthesis, Dimensional Optimization, Computational Design">
+  <meta name="author" content="Jaehun Kim, Eunho Sung, Seunghwan Byun, Seungbin You, Jaeheung Park">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="language" content="English">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Seoul National University & KIST">
+  <meta property="og:title" content="Topology-to-Dimension Synthesis of a Structurally Minimal 3-DoF Closed-Chain Robotic Finger">
+  <meta property="og:description" content="A topology-to-dimension pipeline for a palm-actuated, structurally minimal, 3-DoF closed-chain robotic finger.">
+  <meta property="og:url" content="https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPOSITORY_NAME">
+  <meta property="og:image" content="static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="citation_title" content="Topology-to-Dimension Synthesis of a Structurally Minimal 3-DoF Closed-Chain Robotic Finger">
+  <meta name="citation_author" content="Kim, Jaehun">
+  <meta name="citation_author" content="Sung, Eunho">
+  <meta name="citation_author" content="Byun, Seunghwan">
+  <meta name="citation_author" content="You, Seungbin">
+  <meta name="citation_author" content="Park, Jaeheung">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="IEEE Robotics and Automation Letters">
+  <meta name="citation_pdf_url" content="static/pdfs/JaehunKim_RAL_Manuscript.pdf">
+
   <title>Topology-to-Dimension Synthesis | Jaehun Kim</title>
-  
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
-  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/index.js"></script>
+
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #0f172a;
+      --muted: #475569;
+      --blue: #2563eb;
+      --light: #f8fafc;
+      --line: #e2e8f0;
+      --deep: #0b1020;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: #ffffff;
+    }
+
+    .publication-title {
+      letter-spacing: -0.03em;
+      line-height: 1.13;
+    }
+
+    .publication-authors {
+      line-height: 1.65;
+    }
+
+    .button.is-dark {
+      background: #111827;
+    }
+
+    .hero-teaser video {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.13);
+      background: #0f172a;
+    }
+
+    .section-title {
+      letter-spacing: -0.025em;
+    }
+
+    .text-muted {
+      color: var(--muted);
+    }
+
+    .paper-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 12px 34px rgba(15, 23, 42, 0.055);
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .paper-card .card-body {
+      padding: 1.7rem;
+    }
+
+    .callout {
+      border-left: 5px solid var(--blue);
+      background: #eff6ff;
+      padding: 1.25rem 1.35rem;
+      border-radius: 14px;
+      margin: 1.25rem 0;
+    }
+
+    .tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: #eef2ff;
+      color: #3730a3;
+      border-radius: 999px;
+      padding: 0.45rem 0.75rem;
+      font-size: 0.87rem;
+      font-weight: 700;
+      margin-bottom: 1.15rem;
+    }
+
+    .pipeline-number {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 999px;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 800;
+      margin-right: 0.55rem;
+    }
+
+    .figure-frame {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      padding: 0.65rem;
+      box-shadow: 0 8px 26px rgba(15, 23, 42, 0.06);
+    }
+
+    .figure-frame object,
+    .figure-frame iframe {
+      width: 100%;
+      height: 430px;
+      border: none;
+      border-radius: 10px;
+      display: block;
+      background: #ffffff;
+    }
+
+    .figure-frame.tall object,
+    .figure-frame.tall iframe {
+      height: 620px;
+    }
+
+    .figure-frame.short object,
+    .figure-frame.short iframe {
+      height: 320px;
+    }
+
+    .figure-caption {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-top: 0.75rem;
+      line-height: 1.55;
+    }
+
+    .metric-box {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1.2rem;
+      background: var(--light);
+      height: 100%;
+    }
+
+    .metric-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--blue);
+      letter-spacing: -0.04em;
+    }
+
+    .comparison-table td,
+    .comparison-table th {
+      vertical-align: top;
+    }
+
+    pre {
+      border-radius: 14px;
+      background: var(--deep);
+      color: #e5e7eb;
+      padding: 1.2rem;
+      overflow-x: auto;
+    }
+
+    .video-grid video {
+      width: 100%;
+      border-radius: 14px;
+      background: #0f172a;
+    }
+
+    .footer {
+      background: #f8fafc;
+    }
+
+    @media screen and (max-width: 768px) {
+      .figure-frame object,
+      .figure-frame iframe {
+        height: 340px;
+      }
+
+      .figure-frame.tall object,
+      .figure-frame.tall iframe {
+        height: 460px;
+      }
+
+      .publication-title {
+        font-size: 2rem !important;
+      }
+    }
+  </style>
 
   <script>
-    var password = "snurobotics2026"; 
+    var password = "snurobotics2026";
     var input = prompt("Please enter the access password to view this academic portfolio:");
     if (input !== password) {
       alert("Incorrect password. Access denied.");
-      window.location.href = "https://github.com"; 
+      window.location.href = "https://github.com";
     }
   </script>
 </head>
-<body>
 
-  <main id="main-content">
-  <section class="hero">
+<body>
+<main id="main-content">
+
+  <!--
+    Required figure files.
+    Put these files in: static/figures/
+
+    Figure_Link_Node_Graphs.pdf
+    Figure_Dual_Hypergraphs.pdf
+    Figure_2.pdf
+    Figure_3.pdf
+    Figure_6.pdf
+    Figure_7.pdf
+    Figure_8.pdf
+    Figure_11.pdf
+    Figure_12.pdf
+    Figure_13.pdf
+
+    Required videos.
+    Put these files in: static/videos/
+
+    banner_video.mp4
+    carousel1.mp4
+    carousel2.mp4
+    carousel3.mp4
+
+    Required manuscript PDF.
+    Put this file in: static/pdfs/
+
+    JaehunKim_RAL_Manuscript.pdf
+  -->
+
+  <section class="hero is-white">
     <div class="hero-body">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title" style="font-size: 2.3rem; line-height: 1.2;">
+
+            <span class="tagline">
+              <i class="fa-solid fa-diagram-project"></i>
+              Minimal spatial closed-chain robotic finger
+            </span>
+
+            <h1 class="title is-1 publication-title" style="font-size: 2.45rem;">
               Topology-to-Dimension Synthesis of a Structurally Minimal 3-DoF Closed-Chain Robotic Finger
             </h1>
-            
+
             <div class="is-size-5 publication-authors" style="margin-top: 1.5rem;">
               <span class="author-block"><strong>Jaehun Kim</strong><sup>1</sup>,</span>
               <span class="author-block">Eunho Sung<sup>1</sup>,</span>
               <span class="author-block">Seunghwan Byun<sup>1</sup>,</span>
-              <span class="author-block">Seungbin You<sup>2</sup>,</span>
-              <span class="author-block">Jaeheung Park<sup>3</sup></span>
+              <span class="author-block">Seungbin You<sup>2,†</sup>,</span>
+              <span class="author-block">Jaeheung Park<sup>3,†</sup></span>
             </div>
 
-            <div class="is-size-6 publication-authors" style="margin-top: 1rem; color: #555; line-height: 1.5;">
-              <span class="author-block"><sup>1</sup> Dept. of Intelligence and Information, Graduate School of Convergence Science and Technology, Seoul National University</span><br>
-              <span class="author-block"><sup>2</sup> Center for Humanoid Research, Korea Institute of Science and Technology (KIST)</span><br>
-              <span class="author-block"><sup>3</sup> Dept. of Intelligence and Information, Graduate School of Convergence Science and Technology, ASRI, RICS, Seoul National University</span>
+            <div class="is-size-6 publication-authors text-muted" style="margin-top: 1rem;">
+              <span class="author-block">
+                <sup>1</sup> Graduate School of Convergence Science and Technology, Seoul National University
+              </span><br>
+              <span class="author-block">
+                <sup>2</sup> Center for Humanoid Research, Korea Institute of Science and Technology (KIST)
+              </span><br>
+              <span class="author-block">
+                <sup>3</sup> Graduate School of Convergence Science and Technology, ASRI, RICS, Seoul National University
+              </span><br>
+              <span class="author-block" style="font-weight: 700; color: #334155; margin-top: 0.8rem; display: inline-block;">
+                Under Review at IEEE Robotics and Automation Letters (RA-L)
+              </span>
             </div>
+
+            <div class="publication-links" style="margin-top: 1.4rem;">
+              <span class="link-block">
+                <a href="static/pdfs/JaehunKim_RAL_Manuscript.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Manuscript PDF</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="#pipeline" class="external-link button is-normal is-rounded is-light">
+                  <span class="icon"><i class="fas fa-route"></i></span>
+                  <span>Design Pipeline</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="#topology-details" class="external-link button is-normal is-rounded is-light">
+                  <span class="icon"><i class="fas fa-share-nodes"></i></span>
+                  <span>Topology Graphs</span>
+                </a>
+              </span>
+            </div>
+
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section hero is-light">
+  <section class="hero hero-teaser">
     <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
+      <div class="hero-body pt-2">
+        <video id="teaser" autoplay muted loop controls playsinline>
+          <source src="static/videos/banner_video.mp4" type="video/mp4">
+        </video>
+
+        <h2 class="subtitle has-text-centered text-muted" style="margin-top: 1rem; font-size: 1.08rem; line-height: 1.55;">
+          A fabricated 3-DoF linkage-driven finger generates flexion/extension (FE) and abduction/adduction (AA)
+          from three palm-mounted inputs, while using a compact seven-link/eight-joint spatial closed-chain architecture.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="motivation">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
         <div class="column is-four-fifths">
-          <h2 class="title is-3">Abstract</h2>
-          <div class="content has-text-justified">
+
+          <h2 class="title is-3 section-title has-text-centered">
+            Motivation: beyond decoupled anthropomorphism
+          </h2>
+
+          <div class="content has-text-justified is-size-6">
             <p>
-              Linkage-driven robotic fingers offer a distinct advantage by maintaining low inertia at the distal segments while eliminating the inherent nonlinearities—such as friction, tendon slack, and hysteresis—commonly associated with tendon-driven systems. However, traditional anthropomorphic designs often decouple the joint mechanisms to mimic human anatomy, which inherently introduces an excessive number of links and joints beyond the mathematical minimum required, thereby drastically increasing structural complexity.
+              Linkage-driven robotic fingers are attractive because they can place actuators proximally,
+              reduce distal inertia, and avoid tendon-specific nonidealities such as friction, slack, and hysteresis.
+              Earlier linkage fingers were mostly planar 1-DoF FE mechanisms, followed by planar 2-DoF FE mechanisms
+              or planar FE modules mounted on an AA stage. More recent 3-DoF linkage fingers typically construct
+              a 2-DoF MCP base for FE and AA, then couple an additional planar mechanism to complete 2FE+AA motion.
             </p>
+
             <p>
-              This paper presents a computational design framework that bypasses the conventional decoupled paradigm by treating the finger as a <strong>unified spatial closed-chain mechanism</strong>. We systematically enumerate admissible 3-DoF spatial closed-chain topologies, identify the minimum-link/minimum-joint family under mobility and palm-level actuation feasibility constraints, and perform dimensional optimization to secure sufficient fingertip workspace under symmetry and anthropomorphic constraints. The resulting mechanism integrates abduction/adduction (AA) and flexion/extension (FE) motions directly from palm-mounted actuators. A physical prototype verifies that this minimal topology is kinematically admissible and capable of performing 32 of the 33 grasp types defined in the GRASP taxonomy.
+              This anatomical decomposition makes the mechanism intuitively human-like and simplifies independent
+              joint-level control. However, decoupling each anatomical motion into a separate sub-mechanism can require
+              more links and joints than the minimum needed to realize the same three functional degrees of freedom.
             </p>
+
+            <div class="callout">
+              <strong>Core design thesis.</strong>
+              Instead of designing a finger as several decoupled anatomical modules, this work treats the entire robotic
+              finger as one spatial closed-chain mechanism. The goal is to substantially reduce link-joint count while
+              preserving useful 3-DoF fingertip motion and whole-hand grasp capability.
+            </div>
           </div>
+
+          <table class="table is-fullwidth comparison-table">
+            <thead>
+              <tr>
+                <th>Conventional 3-DoF linkage-finger paradigm</th>
+                <th>Proposed topology-to-dimension paradigm</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Decouple MCP FE, IP FE, and AA into interpretable sub-mechanisms.</td>
+                <td>Synthesize one unified spatial closed chain that directly realizes three functional DoF.</td>
+              </tr>
+              <tr>
+                <td>High anthropomorphic similarity and easier independent control.</td>
+                <td>Lower structural complexity, palm-mounted actuation, and a non-conventional finger morphology.</td>
+              </tr>
+              <tr>
+                <td>Additional links and joints are often introduced as dexterity increases.</td>
+                <td>Minimal link-joint family is selected first, then dimensions are optimized for usable workspace.</td>
+              </tr>
+            </tbody>
+          </table>
+
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section has-background-light" id="pipeline">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered" style="margin-bottom: 3rem;">End-to-End Computational Design Pipeline</h2>
-      
-      <div class="box" style="margin-bottom: 2.5rem; padding: 2rem; background-color: #fafafa; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-        <div class="columns is-vcentered">
+      <h2 class="title is-3 has-text-centered section-title" style="margin-bottom: 3rem;">
+        Topology-to-Dimension Design Pipeline
+      </h2>
+
+      <div class="paper-card" style="margin-bottom: 2.2rem;">
+        <div class="columns is-vcentered is-gapless">
           <div class="column is-5">
-            <img src="static/images/topology_graphs.png" alt="Graph Enumeration" style="width: 100%; border-radius: 6px;">
+            <div class="figure-frame m-5">
+              <object data="static/figures/Figure_Link_Node_Graphs.pdf" type="application/pdf">
+                <a href="static/figures/Figure_Link_Node_Graphs.pdf">Figure_Link_Node_Graphs.pdf</a>
+              </object>
+              <p class="figure-caption">
+                Link-node / joint-edge simple graphs. Each node denotes a link, and each edge denotes a joint.
+              </p>
+            </div>
           </div>
-          <div class="column is-7 has-text-left">
-            <h3 class="title is-4" style="color: #2563eb; margin-bottom: 1rem;">Step 1: Topology Instantiation via Graph Theory</h3>
-            <p>
-              To ensure structural minimality, we treat the robotic finger as a kinematic chain graph. We perform an exhaustive search for 3-DoF spatial topologies that satisfy specific mobility requirements while minimizing total complexity.
-            </p>
-            <ul style="margin-top: 0.5rem; font-size: 0.95rem;">
-              <li><strong>Kinematic Constraint Filtering:</strong> We apply <strong>Grübler’s criterion</strong> to filter potential chain configurations, effectively discarding over-constrained mechanisms or those with redundant degrees of freedom that do not contribute to functional mobility.</li>
-              <li><strong>Structural Minimization:</strong> By utilizing simple graph and hypergraph representations, we identify the minimal set of links (n=7) and joints (E=8) that preserve the required 3-DoF behavior. This prevents the inclusion of unnecessary passive joints often found in biomimetic designs.</li>
-              <li><strong>Actuation Feasibility:</strong> We map the input space to the joint space to ensure all three input axes can be conveniently grounded at the palm, establishing a direct geometric mapping between the actuators and the distal output motion.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-        
-      <div class="box" style="margin-bottom: 2.5rem; padding: 2rem; background-color: #fafafa; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-        <div class="columns is-vcentered">
-          <div class="column is-7 has-text-left">
-            <h3 class="title is-4" style="color: #2563eb; margin-bottom: 1rem;">Step 2: Dimensional Optimization</h3>
-            <p>
-              Once a minimal topology is selected, its physical dimensions must be optimized to achieve anthropomorphic functionality. We employ the <strong>NSGA-II (Non-dominated Sorting Genetic Algorithm II)</strong> to navigate the multi-dimensional design space.
-            </p>
-            <p>
-              We maximize the <strong>reachable workspace volume</strong> and ensure the finger follows an anatomically realistic trajectory. Hard constraints are applied to link ratios to maintain a human-like aesthetic and collision-free operation throughout the flexion/extension range.
-            </p>
-          </div>
-          <div class="column is-5">
-            <img src="static/images/dimensional_optimization.png" alt="Dimensional Optimization" style="width: 100%; border-radius: 6px;">
+
+          <div class="column is-7">
+            <div class="card-body content has-text-left">
+              <h3 class="title is-4">
+                <span class="pipeline-number">1</span>Topology selection
+              </h3>
+
+              <p>
+                The topology search starts from the spatial Grübler mobility equation,
+                <strong>DoF = 6(n<sub>l</sub> - 1) - Σ(6 - f<sub>j</sub>)</strong>,
+                and enumerates link-joint combinations satisfying exactly 3-DoF.
+              </p>
+
+              <p>
+                Algebraic mobility is then screened for functional usefulness. A 3-link-3S example shows why a mechanism
+                can satisfy DoF = 3 mathematically while producing axial spins on S-S links that do not generate independent
+                distal output motion. Under the additional requirement that three 1-DoF actuators be mountable on the ground link,
+                the minimum remaining family is <strong>7 links / 8 joints</strong>, instantiated as either
+                <strong>3R3U2S</strong> or <strong>4R1U3S</strong>.
+              </p>
+
+              <ul>
+                <li>
+                  <strong>Simple-graph enumeration:</strong>
+                  links are nodes and joints are edges; 7-node, 8-edge simple graphs are generated under connectivity
+                  and no-short-cycle constraints.
+                </li>
+                <li>
+                  <strong>Dual hypergraph conversion:</strong>
+                  joints become nodes and links become hyperedges, enabling mechanism-level interpretation and joint-type
+                  placement under graph isomorphism.
+                </li>
+                <li>
+                  <strong>Final screening:</strong>
+                  topology-level over-constraint and bilateral symmetry reduce the candidates to topology 14 and topology 16;
+                  topology 14 is selected because higher-DoF joints are closer to the base.
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="box" style="padding: 2rem; background-color: #fafafa; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-        <div class="columns is-vcentered">
-          <div class="column is-5">
-            <img src="static/images/grasp_taxonomy.png" alt="GRASP Taxonomy" style="width: 100%; border-radius: 6px;">
+      <div class="paper-card" style="margin-bottom: 2.2rem;">
+        <div class="columns is-vcentered is-gapless">
+          <div class="column is-7">
+            <div class="card-body content has-text-left">
+              <h3 class="title is-4">
+                <span class="pipeline-number">2</span>Dimensional optimization
+              </h3>
+
+              <p>
+                A structurally minimal closed-chain finger is strongly coupled and tends to have a small workspace.
+                After fixing the topology, the geometry is therefore optimized to maximize fingertip workspace while
+                preserving a minimal anthropomorphic envelope.
+              </p>
+
+              <ul>
+                <li><strong>Objective 1:</strong> maximize voxelized 3D fingertip workspace volume.</li>
+                <li><strong>Objective 2:</strong> maximize pixelized 2D workspace area on the sagittal symmetry plane.</li>
+                <li>
+                  <strong>Constraints:</strong> mirror symmetry, monotonic link progression from palm to fingertip,
+                  sagittal bending limits, and a finger-sized design domain.
+                </li>
+                <li>
+                  <strong>Search:</strong> NSGA-II is used to identify a Pareto-optimal compromise design, which is then
+                  fabricated as a physical finger and assembled into a four-finger hand.
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="column is-7 has-text-left">
-            <h3 class="title is-4" style="color: #2563eb; margin-bottom: 1rem;">Step 3: Functional Validation</h3>
-            <p>
-              The synthesized design is validated through both simulation and hardware prototyping. The minimal 7-link architecture is stress-tested to ensure it can withstand the forces required for stable object grasping. 
-            </p>
-            <p>
-              As a final performance metric, we map the prototype's capability against the <strong>GRASP taxonomy</strong>. The results demonstrate that our minimal design maintains high dexterity, covering 32 out of 33 defined grasp patterns, proving that structural reduction does not sacrifice functional versatility.
-            </p>
+
+          <div class="column is-5">
+            <div class="figure-frame m-5">
+              <object data="static/figures/Figure_7.pdf" type="application/pdf">
+                <a href="static/figures/Figure_7.pdf">Figure_7.pdf</a>
+              </object>
+              <p class="figure-caption">
+                Optimized fingertip workspace of the selected Pareto-optimal mechanism.
+              </p>
+            </div>
           </div>
         </div>
       </div>
+
+      <div class="paper-card">
+        <div class="columns is-vcentered is-gapless">
+          <div class="column is-5">
+            <div class="figure-frame m-5">
+              <object data="static/figures/Figure_8.pdf" type="application/pdf">
+                <a href="static/figures/Figure_8.pdf">Figure_8.pdf</a>
+              </object>
+              <p class="figure-caption">
+                Fabricated finger mechanism and four-finger robotic hand assembly.
+              </p>
+            </div>
+          </div>
+
+          <div class="column is-7">
+            <div class="card-body content has-text-left">
+              <h3 class="title is-4">
+                <span class="pipeline-number">3</span>Functional capability assessment
+              </h3>
+
+              <p>
+                The physical prototype is evaluated not only as an admissible mechanism, but as a usable robotic hand module.
+                The validation focuses on whole-hand grasp diversity, motion repeatability, and fingertip force capacity.
+              </p>
+
+              <div class="columns">
+                <div class="column">
+                  <div class="metric-box">
+                    <div class="metric-value">32 / 33</div>
+                    <p class="text-muted">
+                      GRASP taxonomy grasp types demonstrated by the four-finger hand.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="column">
+                  <div class="metric-box">
+                    <div class="metric-value">0.01-0.03 mm</div>
+                    <p class="text-muted">
+                      Mean fingertip repeatability error across predefined motion tests.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="column">
+                  <div class="metric-box">
+                    <div class="metric-value">~8.7 N</div>
+                    <p class="text-muted">
+                      Average peak fingertip force under a 300 mA current command.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <p>
+                These experiments support the main claim that a non-decoupled, structurally minimal linkage architecture
+                can still provide practical 3-DoF motion and diverse whole-hand grasping.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="topology-details">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered section-title">
+        Topology enumeration details
+      </h2>
+
+      <p class="has-text-centered text-muted" style="max-width: 760px; margin: 0 auto 2.5rem; line-height: 1.65;">
+        The four graph families requested from pages 1, 3, 2, and 7 of the supplied graph PDFs are redrawn below.
+        Graph indices 1-4 are assigned in that requested order.
+      </p>
+
+      <div class="paper-card" style="margin-bottom: 2rem;">
+        <div class="card-body">
+          <h3 class="title is-4">
+            A. Link-node / joint-edge simple graphs
+          </h3>
+
+          <p class="text-muted">
+            Each node denotes a link, and each edge denotes a joint. This representation is convenient for enumerating
+            7-link/8-joint closed-chain candidates while imposing simple-graph constraints such as minimum degree and
+            exclusion of triangular short cycles.
+          </p>
+
+          <div class="figure-frame">
+            <object data="static/figures/Figure_Link_Node_Graphs.pdf" type="application/pdf">
+              <a href="static/figures/Figure_Link_Node_Graphs.pdf">Figure_Link_Node_Graphs.pdf</a>
+            </object>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-card" style="margin-bottom: 2rem;">
+        <div class="card-body">
+          <h3 class="title is-4">
+            B. Joint-node / link-hyperedge dual representation
+          </h3>
+
+          <p class="text-muted">
+            After swapping links and joints, the mechanism is represented as an 8-node hypergraph: nodes are joints,
+            while each link becomes one hyperedge connecting all joints incident to that link. Therefore, a triangle
+            or internally crossed quadrilateral in the line-graph view should be interpreted as one multi-joint link,
+            not as several separate links.
+          </p>
+
+          <div class="figure-frame">
+            <object data="static/figures/Figure_Dual_Hypergraphs.pdf" type="application/pdf">
+              <a href="static/figures/Figure_Dual_Hypergraphs.pdf">Figure_Dual_Hypergraphs.pdf</a>
+            </object>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-card">
+        <div class="card-body">
+          <h3 class="title is-4">
+            C. Enumerated and selected mechanism topologies
+          </h3>
+
+          <p class="text-muted">
+            Joint types are placed on the dual mechanism representation by considering isomorphism. Additional
+            topology-level over-constraint screening and bilateral symmetry reduce the candidates to topology 14
+            and topology 16.
+          </p>
+
+          <div class="columns">
+            <div class="column">
+              <div class="figure-frame short">
+                <object data="static/figures/Figure_2.pdf" type="application/pdf">
+                  <a href="static/figures/Figure_2.pdf">Figure_2.pdf</a>
+                </object>
+                <p class="figure-caption">
+                  Figure 2. Seven-link/eight-joint topology enumeration.
+                </p>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="figure-frame short">
+                <object data="static/figures/Figure_3.pdf" type="application/pdf">
+                  <a href="static/figures/Figure_3.pdf">Figure_3.pdf</a>
+                </object>
+                <p class="figure-caption">
+                  Figure 3. Mirror-symmetric candidates: topology 14 and topology 16.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section has-background-light" id="optimization-realization">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered section-title">
+        Dimensional optimization and realization
+      </h2>
+
+      <p class="has-text-centered text-muted" style="max-width: 760px; margin: 0 auto 2.5rem; line-height: 1.65;">
+        Because the selected closed-chain topology is minimal and highly coupled, workspace maximization is required
+        to obtain a physically useful finger. Anthropomorphic constraints prevent the optimization from converging to
+        non-finger-like geometries.
+      </p>
+
+      <div class="columns">
+        <div class="column">
+          <div class="paper-card">
+            <div class="card-body">
+              <h3 class="title is-4">Pareto-optimal design</h3>
+              <div class="figure-frame short">
+                <object data="static/figures/Figure_6.pdf" type="application/pdf">
+                  <a href="static/figures/Figure_6.pdf">Figure_6.pdf</a>
+                </object>
+              </div>
+              <p class="figure-caption">
+                Figure 6. Pareto-optimal solution and selected initial mechanism configuration.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="paper-card">
+            <div class="card-body">
+              <h3 class="title is-4">Fingertip workspace</h3>
+              <div class="figure-frame short">
+                <object data="static/figures/Figure_7.pdf" type="application/pdf">
+                  <a href="static/figures/Figure_7.pdf">Figure_7.pdf</a>
+                </object>
+              </div>
+              <p class="figure-caption">
+                Figure 7. Voxelized 3D workspace and pixelized 2D workspace on the symmetry plane.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper-card" style="margin-top: 2rem;">
+        <div class="card-body">
+          <h3 class="title is-4">Prototype realization</h3>
+          <div class="figure-frame">
+            <object data="static/figures/Figure_8.pdf" type="application/pdf">
+              <a href="static/figures/Figure_8.pdf">Figure_8.pdf</a>
+            </object>
+          </div>
+          <p class="figure-caption">
+            Figure 8. Fabricated finger mechanism and assembled robotic hand with four identical finger mechanisms.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="results">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered section-title">
+        Functional validation and demonstrations
+      </h2>
+
+      <p class="has-text-centered text-muted" style="max-width: 760px; margin: 0 auto 2rem; line-height: 1.65;">
+        The supplementary demonstrations can be placed in the three video slots below. The image summarizes the
+        GRASP taxonomy evaluation, where the only unsuccessful grasp is Prismatic 4 Finger because it requires
+        a thumb opposing four fingers.
+      </p>
+
+      <div class="paper-card" style="margin-bottom: 2rem;">
+        <div class="card-body">
+          <h3 class="title is-4">Whole-hand grasp capability</h3>
+          <div class="figure-frame tall">
+            <object data="static/figures/Figure_11.pdf" type="application/pdf">
+              <a href="static/figures/Figure_11.pdf">Figure_11.pdf</a>
+            </object>
+          </div>
+          <p class="figure-caption">
+            Figure 11. Whole-hand grasp postures evaluated based on the GRASP taxonomy.
+            The assembled four-finger robotic hand performs 32 of the 33 grasp types.
+          </p>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <div class="paper-card">
+            <div class="card-body">
+              <h3 class="title is-4">Motion repeatability</h3>
+              <div class="figure-frame short">
+                <object data="static/figures/Figure_12.pdf" type="application/pdf">
+                  <a href="static/figures/Figure_12.pdf">Figure_12.pdf</a>
+                </object>
+              </div>
+              <p class="figure-caption">
+                Figure 12. Repeatability results for five predefined motion tests.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="paper-card">
+            <div class="card-body">
+              <h3 class="title is-4">Force capacity</h3>
+              <div class="figure-frame short">
+                <object data="static/figures/Figure_13.pdf" type="application/pdf">
+                  <a href="static/figures/Figure_13.pdf">Figure_13.pdf</a>
+                </object>
+              </div>
+              <p class="figure-caption">
+                Figure 13. Measured fingertip force capacity under a constant-current command.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns video-grid" style="margin-top: 2rem;">
+        <div class="column">
+          <video controls muted loop preload="metadata">
+            <source src="static/videos/carousel1.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered mt-2">
+            <strong>3-DoF kinematic motion</strong><br>
+            <span class="text-muted">MCP FE, IP FE, and AA</span>
+          </p>
+        </div>
+
+        <div class="column">
+          <video controls muted loop preload="metadata">
+            <source src="static/videos/carousel2.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered mt-2">
+            <strong>Whole-hand grasping</strong><br>
+            <span class="text-muted">Representative GRASP taxonomy postures</span>
+          </p>
+        </div>
+
+        <div class="column">
+          <video controls muted loop preload="metadata">
+            <source src="static/videos/carousel3.mp4" type="video/mp4">
+          </video>
+          <p class="has-text-centered mt-2">
+            <strong>Force capacity test</strong><br>
+            <span class="text-muted">Fingertip force under current command</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+
+      <pre id="bibtex-code"><code>@article{kim2026topology,
+  title={Topology-to-Dimension Synthesis of a Structurally Minimal 3-DoF Closed-Chain Robotic Finger},
+  author={Kim, Jaehun and Sung, Eunho and Byun, Seunghwan and You, Seungbin and Park, Jaeheung},
+  journal={IEEE Robotics and Automation Letters (Submitted)},
+  year={2026}
+}</code></pre>
     </div>
   </section>
 
@@ -133,14 +845,18 @@
     <div class="container">
       <div class="columns is-centered">
         <div class="column is-8">
-          <div class="content has-text-centered">
-            <p>This academic portfolio page was created for research application purposes.</p>
+          <div class="content has-text-centered text-muted">
+            <p>
+              Project page for academic application and manuscript overview purposes.
+              Replace placeholder repository URL, videos, and manuscript-extracted figures with final public assets before release.
+            </p>
           </div>
         </div>
       </div>
     </div>
   </footer>
 
-  </main>
+</main>
 </body>
 </html>
+```
