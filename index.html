@@ -7,7 +7,7 @@
   <meta name="title" content="Topology-to-Dimension Synthesis of a Structurally Minimal 3-DoF Closed-Chain Robotic Finger">
   <meta name="description" content="A computational design framework for synthesizing a structurally minimal 3-DoF spatial closed-chain robotic finger from topology selection to dimensional optimization and hardware validation.">
   <meta name="keywords" content="Robotic Finger, Robotic Hand, Closed-Chain Mechanism, Linkage Mechanism, Topology Synthesis, Dimensional Optimization, Computational Design">
-  <meta name="author" content="Jaehun Kim, Eunho Sung, Seunghwan Byun, Seungbin You, Jaeheung Park">
+  <meta name="author" content="Jaehun Kim, Eunho Sung, Seunghwan Byun, Jaeheung Park">
   <meta name="robots" content="noindex, nofollow">
   <meta name="language" content="English">
 
@@ -24,7 +24,6 @@
   <meta name="citation_author" content="Kim, Jaehun">
   <meta name="citation_author" content="Sung, Eunho">
   <meta name="citation_author" content="Byun, Seunghwan">
-  <meta name="citation_author" content="You, Seungbin">
   <meta name="citation_author" content="Park, Jaeheung">
   <meta name="citation_publication_date" content="2026">
   <meta name="citation_conference_title" content="IEEE Robotics and Automation Letters">
@@ -229,7 +228,6 @@
     FigureA2.png
     FigureB2.png
     Figure2.png
-    Figure3.png
     Figure7.png
     Figure8.png
     Figure11.png
@@ -269,8 +267,7 @@
               <span class="author-block"><strong>Jaehun Kim</strong><sup>1</sup>,</span>
               <span class="author-block">Eunho Sung<sup>1</sup>,</span>
               <span class="author-block">Seunghwan Byun<sup>1</sup>,</span>
-              <span class="author-block">Seungbin You<sup>2,†</sup>,</span>
-              <span class="author-block">Jaeheung Park<sup>3,†</sup></span>
+              <span class="author-block">Jaeheung Park<sup>2,†</sup></span>
             </div>
 
             <div class="is-size-6 publication-authors text-muted" style="margin-top: 1rem;">
@@ -278,10 +275,7 @@
                 <sup>1</sup> Graduate School of Convergence Science and Technology, Seoul National University
               </span><br>
               <span class="author-block">
-                <sup>2</sup> Center for Humanoid Research, Korea Institute of Science and Technology (KIST)
-              </span><br>
-              <span class="author-block">
-                <sup>3</sup> Graduate School of Convergence Science and Technology, ASRI, RICS, Seoul National University
+                <sup>2</sup> Graduate School of Convergence Science and Technology, ASRI, RICS, Seoul National University
               </span><br>
               <span class="author-block" style="font-weight: 700; color: #334155; margin-top: 0.8rem; display: inline-block;">
                 Under Review at IEEE Robotics and Automation Letters (RA-L)
@@ -399,107 +393,89 @@
       </h2>
 
       <div class="paper-card" style="margin-bottom: 2.2rem;">
-        <div class="columns is-vcentered is-gapless">
-          <div class="column is-5">
-            <div class="figure-stack m-5">
-              <div class="figure-frame">
-                <img src="static/images/Figure2.png" alt="Link-node joint-edge simple graphs">
-              </div>
-              <div class="figure-frame">
-                <img src="static/images/Figure3.png" alt="Joint-node link-hyperedge dual hypergraphs">
-              </div>
-              <p class="figure-caption">
-                (TOP) Link-node / joint-edge simple graphs.
-                (BOTTOM) Joint-node / link-hyperedge dual hypergraphs.
-              </p>
-            </div>
+        <div class="card-body content has-text-left">
+          <h3 class="title is-4">
+            <span class="pipeline-number">1</span>Topology selection
+          </h3>
+
+          <p>
+            The topology search starts from the spatial Grübler mobility equation,
+            <strong>DoF = 6(n<sub>l</sub> - 1) - Σ(6 - f<sub>j</sub>)</strong>,
+            and enumerates link-joint combinations satisfying exactly 3-DoF.
+          </p>
+
+          <p>
+            Algebraic mobility is then screened for functional usefulness. A 3-link-3S example shows why a mechanism
+            can satisfy DoF = 3 mathematically while producing axial spins on S-S links that do not generate independent
+            distal output motion. Under the additional requirement that three 1-DoF actuators be mountable on the ground link,
+            the minimum remaining family is <strong>7 links / 8 joints</strong>, instantiated as either
+            <strong>3R3U2S</strong> or <strong>4R1U3S</strong>.
+          </p>
+
+          <ul>
+            <li>
+              <strong>Simple-graph enumeration:</strong>
+              links are nodes and joints are edges; 7-node, 8-edge simple graphs are generated under connectivity
+              and no-short-cycle constraints.
+            </li>
+            <li>
+              <strong>Dual hypergraph conversion:</strong>
+              joints become nodes and links become hyperedges, enabling mechanism-level interpretation and joint-type
+              placement under graph isomorphism.
+            </li>
+            <li>
+              <strong>Final screening:</strong>
+              topology-level over-constraint and bilateral symmetry reduce the candidates to topology 14 and topology 16;
+              topology 14 is selected because higher-DoF joints are closer to the base.
+            </li>
+          </ul>
+
+          <div class="figure-frame" style="margin-top: 1.5rem;">
+            <img src="static/images/Figure2.png" alt="Seven-link/eight-joint topology enumeration">
           </div>
-
-          <div class="column is-7">
-            <div class="card-body content has-text-left">
-              <h3 class="title is-4">
-                <span class="pipeline-number">1</span>Topology selection
-              </h3>
-
-              <p>
-                The topology search starts from the spatial Grübler mobility equation,
-                <strong>DoF = 6(n<sub>l</sub> - 1) - Σ(6 - f<sub>j</sub>)</strong>,
-                and enumerates link-joint combinations satisfying exactly 3-DoF.
-              </p>
-
-              <p>
-                Algebraic mobility is then screened for functional usefulness. A 3-link-3S example shows why a mechanism
-                can satisfy DoF = 3 mathematically while producing axial spins on S-S links that do not generate independent
-                distal output motion. Under the additional requirement that three 1-DoF actuators be mountable on the ground link,
-                the minimum remaining family is <strong>7 links / 8 joints</strong>, instantiated as either
-                <strong>3R3U2S</strong> or <strong>4R1U3S</strong>.
-              </p>
-
-              <ul>
-                <li>
-                  <strong>Simple-graph enumeration:</strong>
-                  links are nodes and joints are edges; 7-node, 8-edge simple graphs are generated under connectivity
-                  and no-short-cycle constraints.
-                </li>
-                <li>
-                  <strong>Dual hypergraph conversion:</strong>
-                  joints become nodes and links become hyperedges, enabling mechanism-level interpretation and joint-type
-                  placement under graph isomorphism.
-                </li>
-                <li>
-                  <strong>Final screening:</strong>
-                  topology-level over-constraint and bilateral symmetry reduce the candidates to topology 14 and topology 16;
-                  topology 14 is selected because higher-DoF joints are closer to the base.
-                </li>
-              </ul>
-            </div>
-          </div>
+          <p class="figure-caption">
+            Seven-link/eight-joint topology enumeration used for topology selection.
+          </p>
         </div>
       </div>
 
       <div class="paper-card" style="margin-bottom: 2.2rem;">
-        <div class="columns is-vcentered is-gapless">
-          <div class="column is-7">
-            <div class="card-body content has-text-left">
-              <h3 class="title is-4">
-                <span class="pipeline-number">2</span>Dimensional optimization
-              </h3>
+        <div class="card-body content has-text-left">
+          <h3 class="title is-4">
+            <span class="pipeline-number">2</span>Dimensional optimization
+          </h3>
 
-              <p>
-                A structurally minimal closed-chain finger is strongly coupled and tends to have a small workspace.
-                After fixing the topology, the geometry is therefore optimized to maximize fingertip workspace while
-                preserving a minimal anthropomorphic envelope.
-              </p>
+          <p>
+            A structurally minimal closed-chain finger is strongly coupled and tends to have a small workspace.
+            After fixing the topology, the geometry is therefore optimized to maximize fingertip workspace while
+            preserving a minimal anthropomorphic envelope.
+          </p>
 
-              <ul>
-                <li><strong>Objective 1:</strong> maximize voxelized 3D fingertip workspace volume.</li>
-                <li><strong>Objective 2:</strong> maximize pixelized 2D workspace area on the sagittal symmetry plane.</li>
-                <li>
-                  <strong>Constraints:</strong> mirror symmetry, monotonic link progression from palm to fingertip,
-                  sagittal bending limits, and a finger-sized design domain.
-                </li>
-                <li>
-                  <strong>Search:</strong> NSGA-II is used to identify a Pareto-optimal compromise design, which is then
-                  fabricated as a physical finger and assembled into a four-finger hand.
-                </li>
-              </ul>
+          <ul>
+            <li><strong>Objective 1:</strong> maximize voxelized 3D fingertip workspace volume.</li>
+            <li><strong>Objective 2:</strong> maximize pixelized 2D workspace area on the sagittal symmetry plane.</li>
+            <li>
+              <strong>Constraints:</strong> mirror symmetry, monotonic link progression from palm to fingertip,
+              sagittal bending limits, and a finger-sized design domain.
+            </li>
+            <li>
+              <strong>Search:</strong> NSGA-II is used to identify a Pareto-optimal compromise design, which is then
+              fabricated as a physical finger and assembled into a four-finger hand.
+            </li>
+          </ul>
+
+          <div class="figure-stack" style="margin-top: 1.5rem;">
+            <div class="figure-frame">
+              <img src="static/images/Figure7.png" alt="Optimized fingertip workspace">
+            </div>
+            <div class="figure-frame">
+              <img src="static/images/Figure8.png" alt="Fabricated finger mechanism and assembled robotic hand">
             </div>
           </div>
-
-          <div class="column is-5">
-            <div class="figure-stack m-5">
-              <div class="figure-frame">
-                <img src="static/images/Figure7.png" alt="Optimized fingertip workspace">
-              </div>
-              <div class="figure-frame">
-                <img src="static/images/Figure8.png" alt="Fabricated finger mechanism and assembled robotic hand">
-              </div>
-              <p class="figure-caption">
-                (TOP) Optimized fingertip workspace of the selected Pareto-optimal mechanism.
-                (BOTTOM) Fabricated finger mechanism and four-finger robotic hand assembly.
-              </p>
-            </div>
-          </div>
+          <p class="figure-caption">
+            (TOP) Optimized fingertip workspace of the selected Pareto-optimal mechanism.
+            (BOTTOM) Fabricated finger mechanism and four-finger robotic hand assembly.
+          </p>
         </div>
       </div>
 
@@ -549,6 +525,38 @@
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+
+          <div class="columns video-grid" style="margin-top: 2rem;">
+            <div class="column">
+              <video controls muted loop preload="metadata">
+                <source src="static/videos/carousel1.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-centered mt-2">
+                <strong>3-DoF kinematic motion</strong><br>
+                <span class="text-muted">MCP FE, IP FE, and AA</span>
+              </p>
+            </div>
+
+            <div class="column">
+              <video controls muted loop preload="metadata">
+                <source src="static/videos/carousel2.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-centered mt-2">
+                <strong>Whole-hand grasping</strong><br>
+                <span class="text-muted">Representative GRASP taxonomy postures</span>
+              </p>
+            </div>
+
+            <div class="column">
+              <video controls muted loop preload="metadata">
+                <source src="static/videos/carousel3.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-centered mt-2">
+                <strong>Force capacity test</strong><br>
+                <span class="text-muted">Fingertip force under current command</span>
+              </p>
             </div>
           </div>
 
@@ -613,24 +621,11 @@
             and topology 16.
           </p>
 
-          <div class="columns">
-            <div class="column">
-              <div class="figure-frame">
-                <img src="static/images/Figure2.png" alt="Seven-link/eight-joint topology enumeration">
-                <p class="figure-caption">
-                  Figure 2. Seven-link/eight-joint topology enumeration.
-                </p>
-              </div>
-            </div>
-
-            <div class="column">
-              <div class="figure-frame">
-                <img src="static/images/Figure3.png" alt="Mirror-symmetric candidates topology 14 and topology 16">
-                <p class="figure-caption">
-                  Figure 3. Mirror-symmetric candidates: topology 14 and topology 16.
-                </p>
-              </div>
-            </div>
+          <div class="figure-frame">
+            <img src="static/images/Figure2.png" alt="Seven-link/eight-joint topology enumeration">
+            <p class="figure-caption">
+              Figure 2. Seven-link/eight-joint topology enumeration.
+            </p>
           </div>
 
         </div>
