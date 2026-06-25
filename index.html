@@ -544,20 +544,29 @@
           </h3>
       
           <p class="text-muted">
-            The first stage represents each candidate mechanism as an ordinary simple graph, where each node denotes a
-            rigid link and each edge denotes a joint connecting two links. This representation is useful for the initial
-            enumeration because graph-theoretic constraints can be imposed before assigning specific joint types. In this
-            work, the search is restricted to seven-link/eight-joint closed-chain candidates obtained after mobility-based
-            filtering. Connectivity, minimum-degree, and short-cycle constraints are then applied to remove graph structures
-            that are clearly unsuitable as a single finger mechanism.
+            The initial topology enumeration is performed using an ordinary simple-graph representation.
           </p>
       
-          <p class="text-muted">
-            In the link-node / joint-edge view, the graph only describes which links are connected by joints. It does not yet
-            specify whether each joint is revolute, universal, or spherical. Therefore, this representation is mainly used as
-            a topology-enumeration layer: it generates the admissible connection patterns among seven links and eight joints
-            while avoiding redundant or infeasible simple-graph structures.
-          </p>
+          <ul class="text-muted">
+            <li>
+              <strong>Node definition:</strong> each node represents one rigid link.
+            </li>
+            <li>
+              <strong>Edge definition:</strong> each edge represents one joint connecting two links.
+            </li>
+            <li>
+              <strong>Purpose:</strong> this representation is used to enumerate admissible seven-link/eight-joint
+              connection patterns before assigning specific joint types.
+            </li>
+            <li>
+              <strong>Graph-level filtering:</strong> connectivity, minimum-degree, and short-cycle constraints are applied
+              to remove graph structures that are unsuitable as a single closed-chain finger mechanism.
+            </li>
+            <li>
+              <strong>Interpretation limit:</strong> this graph only describes link connectivity; it does not yet specify
+              whether each joint is revolute, universal, or spherical.
+            </li>
+          </ul>
       
           <div class="figure-frame">
             <img src="static/images/FigureA2.png" alt="Link-node joint-edge simple graphs">
@@ -572,20 +581,30 @@
           </h3>
       
           <p class="text-muted">
-            The enumerated simple graphs are then converted into a dual hypergraph representation. In this dual view, each
-            node denotes a joint, while each link becomes a hyperedge that connects all joints incident to that link. This
-            conversion is important because a link in a closed-chain mechanism may be connected to more than two joints. Such
-            a multi-joint link cannot be represented as a single ordinary edge in a standard graph, but it can be represented
-            naturally as one hyperedge.
+            The enumerated simple graphs are converted into a dual hypergraph representation for mechanism-level interpretation.
           </p>
       
-          <p class="text-muted">
-            This representation makes the actual mechanism structure easier to interpret. For example, a triangle or an
-            internally crossed quadrilateral in the dual drawing should not be interpreted as several independent links.
-            Instead, it denotes one rigid link connected to three or more joints. The dual hypergraph is therefore used as the
-            mechanism-level representation for assigning joint types, checking symmetry, and comparing topologies under graph
-            isomorphism.
-          </p>
+          <ul class="text-muted">
+            <li>
+              <strong>Node definition:</strong> each node represents one joint.
+            </li>
+            <li>
+              <strong>Hyperedge definition:</strong> each hyperedge represents one rigid link connecting all joints incident
+              to that link.
+            </li>
+            <li>
+              <strong>Reason for conversion:</strong> a rigid link can be connected to more than two joints, which cannot be
+              represented as a single ordinary edge but can be represented naturally as one hyperedge.
+            </li>
+            <li>
+              <strong>Visual interpretation:</strong> a triangle or internally crossed quadrilateral in the dual drawing
+              should be interpreted as one multi-joint rigid link, not as several separate links.
+            </li>
+            <li>
+              <strong>Use in synthesis:</strong> the dual representation is used for joint-type assignment, symmetry checking,
+              and topology comparison under graph isomorphism.
+            </li>
+          </ul>
       
           <div class="figure-frame">
             <img src="static/images/FigureB2.png" alt="Joint-node link-hyperedge dual hypergraphs">
@@ -600,26 +619,37 @@
           </h3>
       
           <p class="text-muted">
-            After the admissible seven-link/eight-joint connection patterns are obtained, joint types are assigned under the
-            minimum 3-DoF candidate families, including 3R3U2S and 4R1U3S. Isomorphic assignments are grouped so that
-            equivalent mechanisms are not counted repeatedly. The resulting mechanism topologies are then screened using
-            topology-level feasibility criteria beyond the algebraic mobility count.
+            After graph enumeration and dual conversion, specific joint types are assigned and the resulting mechanism
+            topologies are screened.
           </p>
       
-          <p class="text-muted">
-            Two additional conditions are particularly important. First, topologies that are likely to introduce
-            over-constraint or functionally ineffective internal motions are excluded. Second, a bilateral symmetry condition
-            is imposed because the target finger is intended to bend primarily on a sagittal plane while retaining symmetric
-            abduction/adduction capability. These conditions reduce the admissible candidates to two mirror-symmetric
-            mechanism topologies, topology 14 and topology 16.
-          </p>
-      
-          <p class="text-muted">
-            Among the two remaining candidates, topology 14 is selected for dimensional optimization. The main reason is that
-            its higher-DoF joints are located closer to the base side of the finger. This arrangement is expected to allow
-            larger distal motion amplification and a larger reachable fingertip workspace after dimensional optimization,
-            while preserving the same seven-link/eight-joint structural complexity.
-          </p>
+          <ul class="text-muted">
+            <li>
+              <strong>Joint-type assignment:</strong> candidate topologies are instantiated using the minimum 3-DoF
+              joint-type families, including <strong>3R3U2S</strong> and <strong>4R1U3S</strong>.
+            </li>
+            <li>
+              <strong>Isomorphism handling:</strong> equivalent joint-type assignments are grouped so that duplicated
+              mechanism topologies are not counted repeatedly.
+            </li>
+            <li>
+              <strong>Topology-level feasibility:</strong> candidates that are likely to introduce over-constraint or
+              functionally ineffective internal motions are removed.
+            </li>
+            <li>
+              <strong>Symmetry condition:</strong> bilateral symmetry is imposed to reflect the intended finger structure,
+              which bends primarily on a sagittal plane while retaining abduction/adduction capability.
+            </li>
+            <li>
+              <strong>Final candidates:</strong> after these screenings, the admissible set is reduced to two
+              mirror-symmetric candidates: <strong>topology 14</strong> and <strong>topology 16</strong>.
+            </li>
+            <li>
+              <strong>Selected topology:</strong> topology 14 is selected because its higher-DoF joints are located closer
+              to the base, which is expected to provide larger distal motion amplification and a larger reachable fingertip
+              workspace after dimensional optimization.
+            </li>
+          </ul>
       
           <div class="figure-frame">
             <img src="static/images/Figure2.png" alt="Seven-link/eight-joint topology enumeration">
